@@ -8,14 +8,15 @@
 
 Repository that serves as example how to build project with Travis CI, Cmake, lcov and CodeCov.
 
+
 ### Table of Contents
 
-**[Build With](#build)**
-**[Prerequisites](#prereq)**
-**[Authors](#authors)**
+**[Build With](#build)**  
+**[Prerequisites](#prereq)**    
+**[Authors](#authors)**  
 **[License](#license)**
 
-## Built With
+##<a name="build"> Built With
 
 The goal of this project is to build project with following tools:
  * C++ version: `C++11`
@@ -28,7 +29,7 @@ The goal of this project is to build project with following tools:
 
 
 ##<a name="prereq"></a> Prerequisites
-  
+
 To build the project you need to install `CMake`. [Here](https://cmake.org/install/) are the instructions. To create code coverage report you need to install `lcov`. [`Download lcov`](http://ltp.sourceforge.net/coverage/lcov.php) from here you can download latest `lcov` and here are [`instructions`](http://ltp.sourceforge.net/coverage/lcov/readme.php). This reports will be later uploaded to CodeCov servers.
 
 ##<a name="authors"></a> Authors
