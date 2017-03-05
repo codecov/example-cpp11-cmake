@@ -41,10 +41,10 @@ To build the project you need to install `CMake`. [Here](https://cmake.org/insta
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/RokKos/classes-c-/blob/master/LICENSE) file for details.
 
 
-[travis-badge]:    https://travis-ci.org/codecov/example-cpp1-cmake.svg?branch=master
-[travis-link]:     https://travis-ci.org/codecov/example-cpp1-cmake
+[travis-badge]:    https://travis-ci.org/codecov/example-cpp11-cmake.svg?branch=master
+[travis-link]:     https://travis-ci.org/codecov/example-cpp11-cmake
 [travis-image]:    https://github.com/codecov/example-cpp1-cmake/blob/master/img/TravisCI.png
 [license-badge]:   https://img.shields.io/badge/license-MIT-007EC7.svg
-[codecov-badge]:   https://codecov.io/gh/codecov/example-cpp1-cmake/branch/master/graph/badge.svg
-[codecov-link]:    https://codecov.io/gh/codecov/example-cpp1-cmake
+[codecov-badge]:   https://codecov.io/gh/codecov/example-cpp11-cmake/branch/master/graph/badge.svg
+[codecov-link]:    https://codecov.io/gh/codecov/example-cpp11-cmake
 [codecov-image]:   https://github.com/codecov/example-cpp1-cmake/blob/master/img/Codecov.png
