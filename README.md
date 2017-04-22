@@ -11,12 +11,12 @@ Repository that serves as example how to build project with Travis CI, Cmake, lc
 
 ### Table of Contents
 
-**[Build With](#build)**  
-**[Prerequisites](#prereq)**    
-**[Authors](#authors)**  
-**[License](#license)**
+* **[Built With](#built-with)**
+* **[Prerequisites](#prerequisites)**
+* **[Authors](#authors)**
+* **[License](#license)**
 
-##<a name="build"> Built With
+## Built With
 
 The goal of this project is to build project with following tools:
  * C++ version: `C++11`
@@ -28,15 +28,15 @@ The goal of this project is to build project with following tools:
  * Source: multiple files
 
 
-##<a name="prereq"></a> Prerequisites
+## Prerequisites
 
 To build the project you need to install `CMake`. [Here](https://cmake.org/install/) are the instructions. To create code coverage report you need to install `lcov`. [`Download lcov`](http://ltp.sourceforge.net/coverage/lcov.php) from here you can download latest `lcov` and here are [`instructions`](http://ltp.sourceforge.net/coverage/lcov/readme.php). This reports will be later uploaded to CodeCov servers.
 
-##<a name="authors"></a> Authors
+## Authors
 
 * **RokKos** - [RokKos](https://github.com/RokKos)
 
-##<a name="license"></a> License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/RokKos/classes-c-/blob/master/LICENSE) file for details.
 
