@@ -28,7 +28,7 @@ fi
 
 showinfo "Running tests ..."
 make -j8 Example_coverage
-../bin/tests
+ctest
 if [ $? -ne 0 ]; then
     error "Error: there are failed tests!"
     exit 4
