@@ -11,10 +11,7 @@ addons:
         sources:
             - ubuntu-toolchain-r-test
         packages:
-            - gcc-5
-            - g++-5
             - lcov
-
 
 branches:
   only:
