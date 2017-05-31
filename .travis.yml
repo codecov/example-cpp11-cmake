@@ -1,5 +1,5 @@
 language: cpp
-sudo: required
+sudo: false
 dist: trusty
 compiler:
 - g++
@@ -19,21 +19,6 @@ addons:
 branches:
   only:
   - master
-
-before_install:
-    - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 50
-
-install:
-    # Installing lcov
-    - cd ${TRAVIS_BUILD_DIR}
-    - wget http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.13.orig.tar.gz
-    - tar xf lcov_1.13.orig.tar.gz
-    - cd lcov-1.13/
-    - sudo make install
-    - cd ..
-    # Checking versions
-    - lcov --version
-    - g++ --version
 
 script: ./run_build.sh
 
