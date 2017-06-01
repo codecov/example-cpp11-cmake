@@ -13,6 +13,7 @@ Repository that serves as example how to build project with Travis CI, Cmake, lc
 
 * **[Built With](#built-with)**
 * **[Prerequisites](#prerequisites)**
+* **[Special Thanks](#special-thanks)**
 * **[Authors](#authors)**
 * **[License](#license)**
 
@@ -31,6 +32,10 @@ The goal of this project is to build project with following tools:
 ## Prerequisites
 
 To build the project you need to install `CMake`. [Here](https://cmake.org/install/) are the instructions. To create code coverage report you need to install `lcov`. [`Download lcov`](http://ltp.sourceforge.net/coverage/lcov.php) from here you can download latest `lcov` and here are [`instructions`](http://ltp.sourceforge.net/coverage/lcov/readme.php). This reports will be later uploaded to CodeCov servers.
+
+## Special Thanks
+Goes to [Richel Bilderbeek](https://github.com/richelbilderbeek) for inspiration and all work on [Travis CI tutorials](https://github.com/richelbilderbeek/travis_cpp_tutorial). 
+Here is [link](https://github.com/richelbilderbeek/travis_cmake_gcc_cpp11) to the same project with structure (except no `lcov`) and here is [list](https://github.com/richelbilderbeek/travis_cpp_tutorial/blob/master/statuses.md) of all his projects if you want make build with travis but with different configuration.
 
 ## Authors
 
