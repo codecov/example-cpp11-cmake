@@ -35,6 +35,7 @@ To build the project you need to install `CMake`. [Here](https://cmake.org/insta
 ## Authors
 
 * **RokKos** - [RokKos](https://github.com/RokKos)
+* **Rolf Eike Beer** - [DerDakon](https://github.com/DerDakon)
 
 ## License
 
