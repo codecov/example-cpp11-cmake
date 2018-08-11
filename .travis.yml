@@ -17,7 +17,8 @@ branches:
   only:
   - master
 
-script: ./run_build.sh
+script:
+  - run_build.sh
 
 after_success:
     # Creating report
@@ -30,7 +31,7 @@ after_success:
 
 notifications:
   email:
-    - kosrok97@gmail.com
+    - luisfisherjr@gmail.com
 
 env:
   global:
