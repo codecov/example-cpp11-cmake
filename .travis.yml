@@ -11,7 +11,15 @@ addons:
     packages:
     - lcov
 
-script: ./run_build.sh
+before_script:
+- |
+  mkdir -p build
+  cd build
+
+script:
+- cmake -DCODE_COVERAGE=ON ..
+- cmake --build . --config Debug -- -j $(nproc)
+- ctest -j $(nproc) --output-on-failure
 
 after_success:
 # Creating report
