@@ -1,14 +1,32 @@
-set(SOURCE_FILES
-    complex.cpp
+cmake_minimum_required(VERSION 3.0)
+
+project(Example_complex LANGUAGES CXX)
+
+# The library
+add_library(example
+  complex.cpp
 )
-add_library(complex ${SOURCE_FILES})
 
-set(TEST_FILES
-    complex_main.cpp
+target_include_directories(example
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(tests ${TEST_FILES})
-# Linking up all libraries
-target_link_libraries(tests complex)
+target_link_libraries(example
+  PUBLIC
+    coverage_config
+)
 
+
+# The library consumer/tests
+add_executable(tests
+  complex_main.cpp
+)
+
+target_link_libraries(tests
+  PRIVATE
+    example
+)
+
+# CTest
 add_test(NAME example_test COMMAND tests)

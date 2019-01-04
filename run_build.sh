@@ -14,8 +14,8 @@ allert () { echo -e "${RED}$1${NC}"; }
 # Building project
 mkdir -p build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-make -j8
+cmake -DCODE_COVERAGE=ON ..
+cmake --build . --config Debug -- -j $(nproc)
 # Checks if last comand didn't output 0
 # $? checks what last command outputed
 # If output is 0 then command is succesfuly executed
@@ -27,8 +27,7 @@ if [ $? -ne 0 ]; then
 fi
 
 showinfo "Running tests ..."
-make -j8 Example_coverage
-ctest
+ctest -j $(nproc) --output-on-failure
 if [ $? -ne 0 ]; then
     error "Error: there are failed tests!"
     exit 4
