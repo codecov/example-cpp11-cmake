@@ -1,7 +1,21 @@
-cmake_minimum_required (VERSION 2.6)
-project (Example)
+cmake_minimum_required (VERSION 3.0)
+project (Example LANGUAGES CXX)
 
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
+
+# Force C++ standard version:
+if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.1)
+  set(CMAKE_CXX_STANDARD 11)
+else()
+  add_compile_options(-std=c++11)
+endif()
+
+# Common configuration
+add_compile_options(
+  -Wall
+  -pedantic
+)
+
 
 # Code coverage configuration
 add_library(coverage_config INTERFACE)
@@ -25,29 +39,9 @@ if(CODE_COVERAGE)
   endif()
 endif(CODE_COVERAGE)
 
-# Setting default folders
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-
-# C++ compile flags
-# -std=c++11 -> for c++ standarts
-# -Wall for WARNING
-# -pedantic -> for warning between c and c++
-# -pthread for portability
-# -g -O0 -fprofile-arcs -ftest-coverage for code coverage
-if(NOT CMAKE_VERSION VERSION_LESS 3.1)
-    set(CMAKE_CXX_STANDARD 11)
-else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-endif()
-
-# Include header files
-include_directories(src)
-
-include(CTest)
+# CTest
 enable_testing()
 
-# Include .cpp files
+# Source
 add_subdirectory(src)
