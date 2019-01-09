@@ -33,7 +33,3 @@ after_success:
 notifications:
   email:
     - kosrok97@gmail.com
-
-env:
-  global:
-  - LANG="en_US.UTF-8"
