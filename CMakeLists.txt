@@ -32,8 +32,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -pthread -g -O0 -fprofil
 # Include header files
 include_directories(src)
 
+add_subdirectory(src)
 include(CTest)
 enable_testing()
+add_subdirectory(tests)
 
-# Include .cpp files
-add_subdirectory(src)
