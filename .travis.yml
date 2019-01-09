@@ -4,7 +4,6 @@ compiler: gcc
 
 addons:
   apt:
-    sources: ubuntu-toolchain-r-test
     packages: lcov
 
 before_script:
