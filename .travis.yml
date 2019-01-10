@@ -16,7 +16,6 @@ script:
 
 after_success:
 # Create additional lcov report
-- cd ${TRAVIS_BUILD_DIR}
 - lcov --capture --directory . --output-file coverage.info
 - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter system-files
 - lcov --list coverage.info
