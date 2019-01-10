@@ -1,37 +1,27 @@
 language: cpp
-sudo: false
-dist: trusty
-compiler:
-- g++
-os:
-- linux
+os: linux
+compiler: gcc
 
 addons:
-    apt:
-        sources:
-            - ubuntu-toolchain-r-test
-        packages:
-            - lcov
+  apt:
+    packages: lcov
 
-branches:
-  only:
-  - master
+before_script:
+- mkdir -p build && cd build
 
-script: ./run_build.sh
+script:
+- cmake -DCODE_COVERAGE=ON ..
+- cmake --build . --config Debug -- -j $(nproc)
+- ctest -j $(nproc) --output-on-failure
 
 after_success:
-    # Creating report
-  - cd ${TRAVIS_BUILD_DIR}
-  - lcov --directory . --capture --output-file coverage.info # capture coverage info
-  - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter out system
-  - lcov --list coverage.info #debug info
-  # Uploading report to CodeCov
-  - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+# Create lcov report
+- lcov --capture --directory . --output-file coverage.info
+- lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter system-files
+- lcov --list coverage.info
+# Uploading to CodeCov
+- bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
 
 notifications:
   email:
     - kosrok97@gmail.com
-
-env:
-  global:
-  - LANG="en_US.UTF-8"

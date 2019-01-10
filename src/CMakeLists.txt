@@ -1,14 +1,13 @@
-set(SOURCE_FILES
-    complex.cpp
-)
-add_library(complex ${SOURCE_FILES})
+cmake_minimum_required(VERSION 3.0)
 
-set(TEST_FILES
-    complex_main.cpp
-)
+# The library
+add_library(example complex.cpp)
+target_include_directories(example PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+# Include code-coverage settings:
+target_link_libraries(example PUBLIC coverage_config)
 
-add_executable(tests ${TEST_FILES})
-# Linking up all libraries
-target_link_libraries(tests complex)
 
+# Tests for the library
+add_executable(tests complex_main.cpp)
+target_link_libraries(tests PRIVATE example) # inherits coverage_config
 add_test(NAME example_test COMMAND tests)

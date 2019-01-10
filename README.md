@@ -11,44 +11,51 @@ The goal of this project is to build project with following tools:
  * Build system: [`CMake`](https://cmake.org/)
  * C++ compiler: `g++`
  * Libraries: `STL` only
- * Code coverage: [`lcov`](http://ltp.sourceforge.net/coverage/lcov.php) (note: it should show the code coverage is below 100%)
+ * Code coverage report: [`lcov`](http://ltp.sourceforge.net/coverage/lcov.php) (note: it should show the code coverage is below 100%)
  * [`CodeCov`](https://codecov.io/) (code coverage is measured by CodeCov).
  * Source: multiple files
 
 ## Special Thanks
 Goes to [Richel Bilderbeek](https://github.com/richelbilderbeek) for inspiration and all work on [Travis CI tutorials](https://github.com/richelbilderbeek/travis_cpp_tutorial). 
-Here is [link](https://github.com/richelbilderbeek/travis_cmake_gcc_cpp11) to the same project with structure (except no `lcov`) and here is [list](https://github.com/richelbilderbeek/travis_cpp_tutorial/blob/master/statuses.md) of all his projects if you want make build with travis but with different configuration.
+Here is a [link](https://github.com/richelbilderbeek/travis_cmake_gcc_cpp11) to a project with the same structure (without `lcov`),
+and here is a [list](https://github.com/richelbilderbeek/travis_cpp_tutorial/blob/master/statuses.md) of all his Travis configuration examples.
 
 ## Prerequisites
-
-To build the project you need to install `CMake`. [Here](https://cmake.org/install/) are the instructions. To create code coverage report you need to install `lcov`. [`Download lcov`](http://ltp.sourceforge.net/coverage/lcov.php) from here you can download latest `lcov` and here are [`instructions`](http://ltp.sourceforge.net/coverage/lcov/readme.php). This reports will be later uploaded to CodeCov servers.
+To build the project you need to install `CMake`. ([Install instructions](https://cmake.org/install/))
+To display a code coverage report in the console, install `lcov`. ([`Download lcov`](http://ltp.sourceforge.net/coverage/lcov.php), [`Instructions`](http://ltp.sourceforge.net/coverage/lcov/readme.php))
 
 ## Guide
-### Travis Setup
+1. Compile with code coverage instrumentation enabled [(GCC)](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html).
+2. Execute the tests to generate the coverage data.
+3. (Optionally) generate and customize reports with `lcov`.
+4. Upload to CodeCov using the bash uploader.
 
-Add to your `.travis.yml` file.
+### Travis Setup Using lcov
+Add to your `.travis.yml` file:
 ```yml
-language: cpp
-compiler:
-- g++
+addons:
+  apt:
+    packages: lcov
+
 after_success:
-    # Creating report
-  - cd ${TRAVIS_BUILD_DIR}
-  - lcov --directory . --capture --output-file coverage.info # capture coverage info
-  - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter out system
-  - lcov --list coverage.info #debug info
-  # Uploading report to CodeCov
-  - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+# Create lcov report
+- lcov --capture --directory . --output-file coverage.info
+- lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter system-files
+- lcov --list coverage.info # debug info
+# Uploading report to CodeCov
+- bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
 ```
-### Produce Coverage Reports
-#### lcov
-Gather reports:
-```sh
-lcov --directory . --capture --output-file coverage.info
+
+### Travis Setup without lcov
+By default the bash uploader processes the coverage data using gcov when no file is supplied.
+```yml
+after_success:
+- bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
 ```
+
 ## Caveats
 ### Private Repos
-Add to your `.travis.yml` file.
+Add to your `.travis.yml` file:
 ```yml
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
@@ -62,9 +69,9 @@ after_success:
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/RokKos/classes-c-/blob/master/LICENSE) file for details.
 
 1. More documentation at https://docs.codecov.io
-2. Configure codecov through the `codecov.yml`  https://docs.codecov.io/docs/codecov-yaml
+2. Configure codecov through the `codecov.yml` https://docs.codecov.io/docs/codecov-yaml
 
-We are happy to help if you have any questions. Please contact email our Support at [support@codecov.io](mailto:support@codecov.io)
+We are happy to help if you have any questions. Please email our Support at [support@codecov.io](mailto:support@codecov.io)
 
 [1]: https://codecov.io/
 [travis-badge]:    https://travis-ci.org/codecov/example-cpp11-cmake.svg?branch=master
