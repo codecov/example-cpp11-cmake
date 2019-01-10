@@ -15,12 +15,12 @@ script:
 - ctest -j $(nproc) --output-on-failure
 
 after_success:
-# Create additional lcov report
+# Create lcov report
 - lcov --capture --directory . --output-file coverage.info
 - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter system-files
 - lcov --list coverage.info
-# Uploading data and report to CodeCov
-- bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+# Uploading to CodeCov
+- bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
 
 notifications:
   email:

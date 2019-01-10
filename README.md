@@ -21,17 +21,16 @@ Here is a [link](https://github.com/richelbilderbeek/travis_cmake_gcc_cpp11) to 
 and here is a [list](https://github.com/richelbilderbeek/travis_cpp_tutorial/blob/master/statuses.md) of all his Travis configuration examples.
 
 ## Prerequisites
-To build the project you need to install `CMake`. [Install instructions](https://cmake.org/install/)
-To display a code coverage report in the console, install `lcov`. [`Download lcov`](http://ltp.sourceforge.net/coverage/lcov.php) from here you can download latest `lcov` and here are [`instructions`](http://ltp.sourceforge.net/coverage/lcov/readme.php).
-(These reports will also be uploaded to CodeCov servers.)
+To build the project you need to install `CMake`. ([Install instructions](https://cmake.org/install/))
+To display a code coverage report in the console, install `lcov`. ([`Download lcov`](http://ltp.sourceforge.net/coverage/lcov.php), [`Instructions`](http://ltp.sourceforge.net/coverage/lcov/readme.php))
 
 ## Guide
-* Compile with code coverage instrumentation enabled [(GCC)](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html).
-* Execute the tests to generate the coverage data.
-* (Optionally) generate and customize reports with `lcov`.
-* Upload to CodeCov using the bash uploader.
+1. Compile with code coverage instrumentation enabled [(GCC)](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html).
+2. Execute the tests to generate the coverage data.
+3. (Optionally) generate and customize reports with `lcov`.
+4. Upload to CodeCov using the bash uploader.
 
-### Travis Setup
+### Travis Setup Using lcov
 Add to your `.travis.yml` file:
 ```yml
 addons:
@@ -39,17 +38,19 @@ addons:
     packages: lcov
 
 after_success:
-# Create additional lcov report
-- cd ${TRAVIS_BUILD_DIR}
+# Create lcov report
 - lcov --capture --directory . --output-file coverage.info
 - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter system-files
 - lcov --list coverage.info # debug info
-# Uploading data and report to CodeCov
-- bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+# Uploading report to CodeCov
+- bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
 ```
-To only upload the lcov report use:
+
+### Travis Setup without lcov
+By default the bash uploader processes the coverage data using gcov when no file is supplied.
 ```yml
-- bash <(curl -s https://codecov.io/bash) -f coverage.info
+after_success:
+- bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
 ```
 
 ## Caveats
