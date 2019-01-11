@@ -11,16 +11,10 @@ addons:
     packages: lcov
 
 install:
-# (fake) install dependencies
+# (fake) install dependencies (usually involves wget, configure, make, ...)
+# install into cache folder (build binaries+headers only, no sources and do NOT build there)
 - mkdir -p $HOME/.cache
-- touch $HOME/.cache/mydepency.cpp
-# Usually this is something like:
-#- wget "http://..."
-#- tar xf component.tar.gz
-#- cd component
-# install into cache folder but do NOT build there
-#- ./configure --prefix=$HOME/.cache/component
-#- make install -j $(nproc)
+- touch $HOME/.cache/mydependency.so
 
 script: ./build.sh
 
