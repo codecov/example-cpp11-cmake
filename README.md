@@ -69,7 +69,8 @@ This repo can serve as the starting point for a new project. The following is wo
 2. Separate testing source tree
   - Allows to easily enable/disable testing
   - Allows usage in parent projects (you don't want to build the tests if you are consumed)
-  - You may want to exclude coverage of test files which is easier when they are in a separate folder
+  - You may want to exclude coverage of test files which is easier when they are in a separate folder.
+    Remember to use **full paths** for patterns (like `'*/tests/*'`)
 3. Use of travis cache to cache manually build 3rd-party dependencies (like boost)
   - Speeds up build
   - More can be added (e.g. `ccache`)
