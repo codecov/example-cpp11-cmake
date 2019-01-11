@@ -2,7 +2,7 @@ language: cpp
 os: linux
 compiler: gcc
 
-cache:
+cache: # see https://docs.travis-ci.com/user/caching/
 - directories:
   - $HOME/.cache
 
@@ -14,6 +14,13 @@ install:
 # (fake) install dependencies
 - mkdir -p $HOME/.cache
 - touch $HOME/.cache/mydepency.cpp
+# Usually this is something like:
+#- wget "http://..."
+#- tar xf component.tar.gz
+#- cd component
+# install into cache folder but do NOT build there
+#- ./configure --prefix=$HOME/.cache/component
+#- make install -j $(nproc)
 
 script: ./build.sh
 
