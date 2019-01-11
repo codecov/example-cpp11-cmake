@@ -64,6 +64,7 @@ after_success:
 ## Authors
 * **RokKos** - [RokKos](https://github.com/RokKos)
 * **Rolf Eike Beer** - [DerDakon](https://github.com/DerDakon)
+* **Alexander Grund** - [Flamefire](https://github.com/Flamefire)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/RokKos/classes-c-/blob/master/LICENSE) file for details.
