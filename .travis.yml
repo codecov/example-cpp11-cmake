@@ -10,23 +10,20 @@ addons:
   apt:
     packages: lcov
 
-before_script:
-- mkdir -p build && cd build
-
 install:
 # (fake) install dependencies
 - mkdir -p $HOME/.cache
 - touch $HOME/.cache/mydepency.cpp
 
-script:
-- cmake -DCODE_COVERAGE=ON ..
-- cmake --build . --config Debug -- -j $(nproc)
-- ctest -j $(nproc) --output-on-failure
+script: ./build.sh
 
 after_success:
 # Create lcov report
-- lcov --directory . --capture --output-file coverage.info # capture coverage info
-- lcov --remove coverage.info '/usr/*' '*/tests/*' "${HOME}"'/.cache/*' --output-file coverage.info # filter out system
+# capture coverage info
+- lcov --directory . --capture --output-file coverage.info
+# filter out system and extra files
+- lcov --remove coverage.info '/usr/*' '*/tests/*' "${HOME}"'/.cache/*' --output-file coverage.info
+# output coverage data for debugging (optional)
 - lcov --list coverage.info
 # Uploading to CodeCov
 # '-f' specifies file(s) to use and disables manual coverage gathering and file search which has already been done above
