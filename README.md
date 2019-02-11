@@ -16,7 +16,7 @@ The goal of this project is to build project with following tools:
  * Source: multiple files
 
 ## Special Thanks
-Goes to [Richel Bilderbeek](https://github.com/richelbilderbeek) for inspiration and all work on [Travis CI tutorials](https://github.com/richelbilderbeek/travis_cpp_tutorial). 
+Goes to [Richel Bilderbeek](https://github.com/richelbilderbeek) for inspiration and all work on [Travis CI tutorials](https://github.com/richelbilderbeek/travis_cpp_tutorial).
 Here is a [link](https://github.com/richelbilderbeek/travis_cmake_gcc_cpp11) to a project with the same structure (without `lcov`),
 and here is a [list](https://github.com/richelbilderbeek/travis_cpp_tutorial/blob/master/statuses.md) of all his Travis configuration examples.
 
@@ -61,9 +61,25 @@ after_success:
   - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
 ```
 
+## Example details
+This repo can serve as the starting point for a new project. The following is worth noticing:
+1. Use of a build script instead of putting the commands into `.travis.yml`
+  - Allows local testing
+  - Allows usage of `set -e` to error out with meaningfull messages on any command failure
+2. Separate testing source tree
+  - Allows to easily enable/disable testing
+  - Allows usage in parent projects (you don't want to build the tests if you are consumed)
+  - You may want to exclude coverage of test files which is easier when they are in a separate folder.
+    Remember to use **full paths** for patterns (like `'*/tests/*'`)
+3. Use of travis cache to cache manually build 3rd-party dependencies (like boost)
+  - Speeds up build
+  - More can be added (e.g. `ccache`)
+  - Those need to be excluded from coverage info too
+
 ## Authors
 * **RokKos** - [RokKos](https://github.com/RokKos)
 * **Rolf Eike Beer** - [DerDakon](https://github.com/DerDakon)
+* **Alexander Grund** - [Flamefire](https://github.com/Flamefire)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/RokKos/classes-c-/blob/master/LICENSE) file for details.
