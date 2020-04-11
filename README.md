@@ -9,9 +9,9 @@
 The goal of this project is to build project with following tools:
  * C++ version: `C++11`
  * Build system: [`CMake`](https://cmake.org/)
- * C++ compiler: `g++`
+ * C++ compiler: `g++` or Visual Studio
  * Libraries: `STL` only
- * Code coverage report: [`lcov`](http://ltp.sourceforge.net/coverage/lcov.php) (note: it should show the code coverage is below 100%)
+ * Code coverage report: [`lcov`](http://ltp.sourceforge.net/coverage/lcov.php) and [`OpenCppCoverage`](https://github.com/OpenCppCoverage/OpenCppCoverage)(note: it should show the code coverage is below 100%)
  * [`CodeCov`](https://codecov.io/) (code coverage is measured by CodeCov).
  * Source: multiple files
 
