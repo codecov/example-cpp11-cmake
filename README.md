@@ -1,6 +1,7 @@
 # [Codecov][1] CI CMake g++ cpp11 lcov Example
 [![Travis CI logo][travis-image]][travis-link]
 [![Codecov logo][codecov-image]][codecov-link]
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-cpp11-cmake.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-cpp11-cmake?ref=badge_shield)
 
 [![Build Status][travis-badge]][travis-link]
 [![codecov][codecov-badge]][codecov-link]
@@ -97,3 +98,6 @@ We are happy to help if you have any questions. Please email our Support at [sup
 [codecov-badge]:   https://codecov.io/gh/codecov/example-cpp11-cmake/branch/master/graph/badge.svg
 [codecov-link]:    https://codecov.io/gh/codecov/example-cpp11-cmake
 [codecov-image]:   https://github.com/codecov/example-cpp1-cmake/blob/master/img/Codecov.png
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-cpp11-cmake.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-cpp11-cmake?ref=badge_large)
