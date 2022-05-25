@@ -1,6 +1,6 @@
 language: cpp
 os: linux
-compiler: gcc
+compiler: clang
 
 cache: # see https://docs.travis-ci.com/user/caching/
 - directories:
