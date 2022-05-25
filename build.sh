@@ -10,7 +10,7 @@ cmake -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ..
 cmake --build . --config Debug -- -j $(nproc)
 
 # Test
-export LLVM_PROFILE_FILE=$HOME/profiles
+export LLVM_PROFILE_FILE=$HOME/profiles/%p.profdata
 ctest -j $(nproc) --output-on-failure
 
 cd ..
