@@ -13,3 +13,4 @@ cmake --build . --config Debug -- -j $(nproc)
 export LLVM_PROFILE_FILE=$HOME/profiles
 ctest -j $(nproc) --output-on-failure
 
+cd ..

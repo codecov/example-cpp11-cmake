@@ -27,7 +27,8 @@ after_success:
 - llvm-profdata merge -o $HOME/profile.profdata -sparse $HOME/profiles/
 # filter out system and extra files.
 # To also not include test code in coverage add them with full path to the patterns: '*/tests/*'
-- llvm-cov show -Xdemangler c++filt -instr-profile=${FULL_PROFILE_PATH} example > coverage.info
+- ls -lR
+- llvm-cov show -Xdemangler c++filt -instr-profile=$HOME/profile.profdata ./build/tests/tests > coverage.info
 # Uploading to CodeCov
 # '-f' specifies file(s) to use and disables manual coverage gathering and file search which has already been done above
 - bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
