@@ -1,0 +1,1 @@
+# FOSSA: setuptools discovery target at repo root (add real deps here if applicable).
