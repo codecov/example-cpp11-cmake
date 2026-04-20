@@ -1,0 +1,11 @@
+version: 3
+
+# FOSSA CLI for getsentry/action-enforce-license-compliance.
+# https://github.com/fossas/fossa-cli/blob/master/docs/references/files/fossa-yml.md
+
+project:
+  id: github.com/codecov/example-cpp11-cmake
+  url: https://github.com/codecov/example-cpp11-cmake
+
+telemetry:
+  scope: "off"
